@@ -1,6 +1,8 @@
 import { Container, Row, Col } from "reactstrap";
+import Typed from "react-typed";
 
 export default function Home() {
+  const ROLES = ["Developer", "Tech Lover", "Team Player", "React.js"];
   return (
     <>
       <div className="main-section">
@@ -35,6 +37,17 @@ export default function Home() {
                   through the years!
                 </h1>
               </div>
+              <Typed
+                loop
+                strings={ROLES}
+                typeSpeed={70}
+                backSpeed={70}
+                backDelay={1000}
+                loopCount={0}
+                showCursor
+                className="self-typed"
+                cursorChar="|"
+              ></Typed>
               <div className="hero-welcome-bio">
                 <h1>Let's take a look on my work.</h1>
               </div>
