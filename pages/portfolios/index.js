@@ -1,6 +1,5 @@
 import axios from "axios";
-
-import { Link } from "../routes";
+import Link from "next/link";
 
 const Portfolios = ({ posts }) => {
   return (
@@ -8,7 +7,7 @@ const Portfolios = ({ posts }) => {
       <ul>
         {posts.map((post) => (
           <li key={post.id} style={{ fontSize: 20 }}>
-            <Link route={`/portfolios/${post.id}`}>
+            <Link href={`/portfolios/${post.id}`}>
               <a>{post.title}</a>
             </Link>
           </li>
