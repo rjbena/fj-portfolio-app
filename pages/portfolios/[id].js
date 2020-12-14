@@ -1,29 +1,42 @@
-import axios from "axios";
+//import axios from "axios";
+import { Spinner } from "reactstrap";
+import { useRouter } from "next/router";
 
-const Portfolio = ({ post }) => {
+import { useGetPostById } from "@/actions";
+
+const Portfolio = () => {
+  const router = useRouter();
+  const { data: portfolio, error, loading } = useGetPostById(router.query.id);
+
   return (
     <div>
-      <h1>{post.title}</h1>
-      <p>Body: {post.body}</p>
-      <p>ID: {post.id}</p>
+      {loading && <Spinner>Loading...</Spinner>}
+      {error && <div className="alert alert-danger">{error.message}</div>}
+      {portfolio && (
+        <>
+          <h1>{portfolio.title}</h1>
+          <p>Body: {portfolio.body}</p>
+          <p>ID: {portfolio.id}</p>
+        </>
+      )}
     </div>
   );
 };
 
-export async function getServerSideProps({ params }) {
-  try {
-    const { data } = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${params.id}`
-    );
-    return {
-      props: {
-        post: data,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export async function getServerSideProps({ params }) {
+//   try {
+//     const { data } = await axios.get(
+//       `https://jsonplaceholder.typicode.com/posts/${params.id}`
+//     );
+//     return {
+//       props: {
+//         post: data,
+//       },
+//     };
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 export default Portfolio;
 

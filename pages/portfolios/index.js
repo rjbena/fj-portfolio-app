@@ -1,24 +1,28 @@
 import Link from "next/link";
 import { Spinner } from "reactstrap";
 
-import { useGetData } from "@/actions";
+import { useGetPosts } from "@/actions";
 
 const Portfolios = () => {
-  const { data, error, loading } = useGetData("/api/v1/posts");
+  const { data, error, loading } = useGetPosts();
+
+  const renderPosts = (posts) => {
+    return posts.map((post) => (
+      <li key={post.id} style={{ fontSize: "20px" }}>
+        <Link as={`/portfolios/${post.id}`} href="/portfolios/[id]">
+          <a>{post.title}</a>
+        </Link>
+      </li>
+    ));
+  };
+
   return (
-    <div>
-      {loading && <Spinner>Loading...</Spinner>}
-      <ul>
-        {data.map((post) => (
-          <li key={post.id} style={{ fontSize: 20 }}>
-            <Link href={`/portfolios/${post.id}`}>
-              <a>{post.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <>
+      <h1>I am Portfolio Page</h1>
+      {loading && <Spinner>Loading data...</Spinner>}
+      {data && <ul>{renderPosts(data)}</ul>}
       {error && <div className="alert alert-danger">{error.message}</div>}
-    </div>
+    </>
   );
 };
 
