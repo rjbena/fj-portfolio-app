@@ -1,11 +1,15 @@
-import axios from "axios";
 import Link from "next/link";
+import { Spinner } from "reactstrap";
 
-const Portfolios = ({ posts }) => {
+import { useGetData } from "@/actions";
+
+const Portfolios = () => {
+  const { data, error, loading } = useGetData("/api/v1/posts");
   return (
     <div>
+      {loading && <Spinner>Loading...</Spinner>}
       <ul>
-        {posts.map((post) => (
+        {data.map((post) => (
           <li key={post.id} style={{ fontSize: 20 }}>
             <Link href={`/portfolios/${post.id}`}>
               <a>{post.title}</a>
@@ -13,24 +17,9 @@ const Portfolios = ({ posts }) => {
           </li>
         ))}
       </ul>
+      {error && <div className="alert alert-danger">{error.message}</div>}
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  let posts = [];
-  try {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-
-    posts = await res.data.slice(0, 10);
-    return {
-      props: {
-        posts,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 export default Portfolios;
