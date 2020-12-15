@@ -1,9 +1,9 @@
 import Header from "../shared/Header";
 
-const BaseLayout = ({ className, children }) => {
+const BaseLayout = ({ className, children, user, loading }) => {
   return (
     <div className="layout-container">
-      <Header />
+      <Header user={user} loading={loading} />
       <main className={`cover ${className}`}>
         <div className="wrapper">{children}</div>
       </main>

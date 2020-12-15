@@ -3,10 +3,12 @@ import "@/styles/main.scss";
 
 import BaseLayout from "../components/layouts/BaseLayout";
 import BasePage from "../components/BasePage";
+import { getUser } from "../actions/user";
 
 function MyApp({ Component, pageProps }) {
+  const { data, loading } = getUser();
   return (
-    <BaseLayout className="cover">
+    <BaseLayout user={data} loading={loading} className="cover">
       <BasePage>
         <Component {...pageProps} />
       </BasePage>
