@@ -1,21 +1,10 @@
-import { Spinner } from "reactstrap";
-
-import Redirect from "../components/shared/Redirect";
-import { getUser } from "../actions/user";
-
-const Secret = () => {
-  const { data: user, loading } = getUser();
-
-  if (!user) {
-    return <Redirect to="/api/v1/login" />;
-  }
-
-  return (
-    <>
-      {loading && <Spinner>Loading...</Spinner>}
-      {user && <h1>I am Secret Page</h1>}
-    </>
-  );
+import withAuth from "../hoc/withAuth";
+const Secret = ({ user, loading }) => {
+  return <h1>Secret Page Hello {user.name}</h1>;
 };
 
-export default Secret;
+//High Order Component -HOC
+//Simple function that takes a component and returns a new
+//component with extended functionality
+
+export default withAuth(Secret);
