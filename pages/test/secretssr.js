@@ -1,4 +1,4 @@
-import { authorizeUser, withAuth } from "../utils/auth0";
+import { authorizeUser, withAuth } from "../../utils/auth0";
 
 const Secretssr = ({ user, title }) => {
   return (
@@ -29,6 +29,6 @@ const getTitle = () => {
 export const getServerSideProps = withAuth(async () => {
   const title = await getTitle();
   return title;
-});
+})();
 
 export default Secretssr;

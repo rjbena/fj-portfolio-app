@@ -1,4 +1,4 @@
-import withAuth from "../hoc/withAuth";
+import withAuth from "../../hoc/withAuth";
 const Secret = ({ user, loading }) => {
   return <h1>Secret Page Hello {user.name}</h1>;
 };
