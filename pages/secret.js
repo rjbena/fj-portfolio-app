@@ -7,4 +7,4 @@ const Secret = ({ user, loading }) => {
 //Simple function that takes a component and returns a new
 //component with extended functionality
 
-export default withAuth(Secret);
+export default withAuth(Secret)();
