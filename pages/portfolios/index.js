@@ -1,28 +1,32 @@
 import Link from "next/link";
-import { Spinner } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
-import { useGetPosts } from "@/actions";
+import PortfolioCard from "../../components/PortfolioCard";
+//import { useGetPosts } from "@/actions";
+import { getAllPortfolios } from "../../lib/api/portfolios";
 
-const Portfolios = () => {
-  const { data, error, loading } = useGetPosts();
-  const renderPosts = (posts) => {
-    return posts.map((post) => (
-      <li key={post.id} style={{ fontSize: "20px" }}>
-        <Link as={`/portfolios/${post.id}`} href="/portfolios/[id]">
-          <a>{post.title}</a>
-        </Link>
-      </li>
-    ));
-  };
-
+const Portfolios = ({ portfolios }) => {
   return (
-    <>
-      <h1>I am Portfolio Page</h1>
-      {loading && <Spinner>Loading data...</Spinner>}
-      {data && <ul>{renderPosts(data)}</ul>}
-      {error && <div className="alert alert-danger">{error.message}</div>}
-    </>
+    <div className="portfolio-page">
+      <div className="page-header">
+        <h1 className="page-header-title">Portfolios Page</h1>
+      </div>
+      <Row>
+        {portfolios.map((portfolio) => (
+          <Col key={portfolio._id} md="4">
+            <PortfolioCard portfolio={portfolio} />
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 };
+
+export async function getStaticProps() {
+  const portfolios = await getAllPortfolios();
+  return {
+    props: { portfolios },
+  };
+}
 
 export default Portfolios;
