@@ -1,6 +1,7 @@
 @import './shared/fonts';
 //components
 @import './components/header';
+@import './components//portfolios';
 //pages
 @import './index';
 
@@ -12,7 +13,15 @@ html , body {
 
 .base-page {
     padding-top: 150px;
-    color: white;
+    color: black;
+
+    min-height: 100vh;
+
+    .page-header-title {
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
 }
 
 .clickable {
@@ -29,3 +38,4 @@ html , body {
     font-weight: bold;
     letter-spacing: 2px;
 }
+
