@@ -11,6 +11,7 @@ const withAuth = (Component) => (role) => {
     if (loading) {
       return <Spinner>Loading...</Spinner>;
     }
+
     if (!user) {
       return <Redirect ssr to="/api/v1/login" />;
     } else {

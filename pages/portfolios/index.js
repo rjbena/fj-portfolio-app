@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Row, Col } from "reactstrap";
 
 import PortfolioCard from "../../components/PortfolioCard";
