@@ -2,10 +2,11 @@ import { Row, Col } from "reactstrap";
 
 import PortfolioForm from "../../components/PortfolioForm";
 import withAuth from "../../hoc/withAuth";
+import { createNewPortfolio } from "../../actions/portfolio";
 
 const CreatePortfolio = () => {
   const createPortfolio = (portfolio) => {
-    alert(JSON.stringify(portfolio));
+    createNewPortfolio(portfolio);
   };
   return (
     <div>
