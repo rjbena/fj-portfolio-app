@@ -107,6 +107,7 @@ const PortfolioForm = ({ onSubmit }) => {
               disabled={!endDate}
               showYearDropdown
               minDate={startDate}
+              maxDate={new Date()}
               selected={endDate}
               onChange={handleDateChange("endDate", setEndDate)}
             />
