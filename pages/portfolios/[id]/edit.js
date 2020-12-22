@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { Row, Col } from "reactstrap";
-import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 import {
   useGetPortfolioById,
@@ -12,13 +12,11 @@ import PortfolioForm from "../../../components/PortfolioForm";
 const EditPortfolioPage = () => {
   const router = useRouter();
   const { data } = useGetPortfolioById(router.query.id);
-  const [
-    updatePortfolio,
-    { data: updatedPortfolio, error, loadin },
-  ] = useUpdatePortfolio();
+  const [updatePortfolio, { error }] = useUpdatePortfolio();
 
-  const update = (updateData) => {
-    updatePortfolio(router.query.id, updateData);
+  const update = async (updateData) => {
+    await updatePortfolio(router.query.id, updateData);
+    toast.success("Portfolio has been updated", { autoClose: 2000 });
   };
 
   return (
@@ -28,6 +26,7 @@ const EditPortfolioPage = () => {
           {data && <PortfolioForm onSubmit={update} initialState={data} />}
         </Col>
       </Row>
+      {error && <div className="alert alert-danger mt-2">{error}</div>}
     </div>
   );
 };

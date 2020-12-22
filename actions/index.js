@@ -33,6 +33,7 @@ export function useApiHandler(apiCallback) {
         (error.response && error.response.data) ||
         "Error, Something went wrong!";
       setReqState({ error: message, data: null, loading: false });
+      return Promise.reject(message);
     }
   };
 
