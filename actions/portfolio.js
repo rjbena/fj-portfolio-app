@@ -7,7 +7,12 @@ function createNewPortfolio(data) {
   return axios.post("/api/v1/portfolios", data);
 }
 
+const updatePortfolio = (id, data) =>
+  axios.patch(`/api/v1/portfolios/${id}`, data);
+
 export const useCreatePortfolio = () => useApiHandler(createNewPortfolio);
+
+export const useUpdatePortfolio = () => useApiHandler(updatePortfolio);
 
 export const useGetPortfolioById = (id) => {
   const { data, error, ...rest } = useSWR(
