@@ -1,5 +1,5 @@
-import { createNewPortfolio } from "../../../lib/api/portfolios";
-import auth0 from "../../../utils/auth0";
+import { createNewPortfolio } from "../../../../lib/api/portfolios";
+import auth0 from "../../../../utils/auth0";
 
 export default async function createPortfolio(req, res) {
   try {
@@ -9,6 +9,6 @@ export default async function createPortfolio(req, res) {
     await createNewPortfolio(data, accessToken);
     return res.json({ message: "Portfolio was created!" });
   } catch (error) {
-    return res.status(e.status || 400).end(e.message);
+    return res.status(error.status || 420).end(error.response.data);
   }
 }

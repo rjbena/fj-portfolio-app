@@ -30,7 +30,7 @@ export function useApiHandler(apiCallback) {
       setReqState({ error: null, data: json.data, loading: false });
     } catch (error) {
       const message =
-        (error.response && error.response.message) ||
+        (error.response && error.response.data) ||
         "Error, Something went wrong!";
       setReqState({ error: message, data: null, loading: false });
     }

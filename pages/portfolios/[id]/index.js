@@ -1,6 +1,4 @@
-//import axios from "axios";
-
-import { getPortflioById, getAllPortfolios } from "../../lib/api/portfolios";
+import { getPortflioById, getAllPortfolios } from "../../../lib/api/portfolios";
 
 const Portfolio = ({ portfolio }) => {
   return (

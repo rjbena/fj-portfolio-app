@@ -25,6 +25,7 @@ const CreatePortfolio = () => {
       <Row>
         <Col md="8">
           <PortfolioForm onSubmit={createPortfolio} />
+          {error && <div className="alert alert-danger mt-2">{error}</div>}
         </Col>
       </Row>
     </div>
