@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardBody, CardText, CardTitle } from "reactstrap";
 import Link from "next/link";
 
-const PortfolioCard = ({ portfolio }) => (
+const PortfolioCard = ({ portfolio, children }) => (
   <Link href={`/portfolios/${portfolio._id}`}>
     <a>
       <Card className="portfolio-card">
@@ -16,6 +16,7 @@ const PortfolioCard = ({ portfolio }) => (
           <CardText className="portfolio-card-text">
             {portfolio.description}
           </CardText>
+          {children}
         </CardBody>
       </Card>
     </a>
