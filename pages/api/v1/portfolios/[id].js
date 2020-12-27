@@ -1,6 +1,7 @@
 import {
   getPortflioById,
   updatePortfolio,
+  deletePortfolio,
 } from "../../../../lib/api/portfolios";
 import auth0 from "../../../../utils/auth0";
 
@@ -18,6 +19,11 @@ export default async function handlePortfolio(req, res) {
         req.body,
         accessToken
       );
+      return res.json(data);
+    }
+    if (req.method === "DELETE") {
+      const { accessToken } = await auth0.getSession(req);
+      const { data } = await deletePortfolio(req.query.id, accessToken);
       return res.json(data);
     }
   } catch (error) {
