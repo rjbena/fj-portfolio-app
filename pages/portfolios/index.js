@@ -56,6 +56,7 @@ export async function getStaticProps() {
   const portfolios = await getAllPortfolios();
   return {
     props: { portfolios },
+    revalidate: 1,
   };
 }
 
