@@ -1,4 +1,4 @@
-import { getBlogById } from "../../../../lib/api/blogs";
+import { getBlogById, updateBlog, deleteBlog } from "../../../../lib/api/blogs";
 import auth0 from "../../../../utils/auth0";
 
 export default async function handleBlog(req, res) {
