@@ -3,6 +3,7 @@ import useSWR from "swr";
 
 import { useApiHandler, fetcher } from "./index";
 
+const getBlogByUser = () => axios.get("/api/v1/blogs/me");
 const createBlog = (data) => axios.post("/api/v1/blogs", data);
 const updateBlog = (id, data) => axios.patch(`/api/v1/blogs/${id}`, data);
 
@@ -13,6 +14,8 @@ export const useCreateBlog = () => useApiHandler(createBlog);
 export const useUpdateBlog = () => useApiHandler(updateBlog);
 
 export const useDeleteBlog = () => useApiHandler(deleteBlog);
+
+export const useGetBlogByUser = () => useApiHandler(getBlogByUser);
 
 export const useGetBlogById = (id) => {
   const { data, error, ...rest } = useSWR(
