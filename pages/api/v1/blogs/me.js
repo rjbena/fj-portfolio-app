@@ -5,7 +5,7 @@ export default async function getBlog(req, res) {
   try {
     const { accessToken } = await auth0.getSession(req);
 
-    const data = await getBlogByUser(accessToken);
+    const data = await getBlogByUser();
 
     return res.json(data);
   } catch (error) {

@@ -15,7 +15,10 @@ export const useUpdateBlog = () => useApiHandler(updateBlog);
 
 export const useDeleteBlog = () => useApiHandler(deleteBlog);
 
-export const useGetBlogByUser = () => useApiHandler(getBlogByUser);
+export const useGetBlogByUser = () => {
+  const { data, error, ...rest } = useSWR("/api/v1/blogs/me", fetcher);
+  return { data, error, loading: !data && !error, ...rest };
+};
 
 export const useGetBlogById = (id) => {
   const { data, error, ...rest } = useSWR(
