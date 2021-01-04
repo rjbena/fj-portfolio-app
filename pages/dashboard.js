@@ -1,4 +1,4 @@
-import { Row, Col } from "reactstrap";
+import { Row, Col, Button } from "reactstrap";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
@@ -56,7 +56,14 @@ const Dashboard = () => {
       {loading && <p>Loading....</p>}
       {blogs && (
         <ul>
-          <Masthead imagePath="/images/home-bg.jpg" />
+          <Masthead imagePath="/images/home-bg.jpg">
+            <span className="subheading">
+              Let's write some nice blog today{" "}
+              <Link href="/blogs/editor">
+                <Button color="primary">Create a new Blog</Button>
+              </Link>
+            </span>
+          </Masthead>
           <div className={"base-page blog-user-page"}>
             <Row>
               <Col md="6" className="mx-auto text-center">
