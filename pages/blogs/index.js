@@ -28,8 +28,8 @@ const Blog = ({ blogs }) => {
 };
 
 export async function getServerSideProps() {
-  const blogs = await getAllBlogs();
-
+  const data = await getAllBlogs();
+  const blogs = data.map((d) => ({ ...d.blog, author: d.user }));
   return {
     props: { blogs },
   };
