@@ -1,4 +1,4 @@
-@import './shared/fonts';
+
 //components
 @import './components/header';
 @import './components//portfolios';
@@ -7,6 +7,7 @@
 @import './blogs';
 @import './dashboard';
 @import './about.scss';
+@import './portfolios.scss';
 html , body {
     height: 100%;
     width: 100%;
