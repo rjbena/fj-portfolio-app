@@ -44,7 +44,7 @@ export default function Home() {
                     </div>
                     <div className="back">
                       <div className="hero-section-content">
-                        <h2> Full Stack Web Developer </h2>
+                        <h2> Full Stack Developer </h2>
                         <div className="hero-section-content-intro">
                           Have a look at my portfolio and job history.
                         </div>
